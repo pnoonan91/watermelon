@@ -1,0 +1,6 @@
+dark-pink: #f64852
+pink: #f76772
+light-pink: #f78d93
+light-green: #b9ce87
+green: #85be6e
+bright-green: #39b549
