@@ -68,3 +68,87 @@ p{
   padding-bottom: 2rem;
   border-bottom: 30px solid #f64852;
 }
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+#new-game-pane{
+  display: flex;
+  background-color: #f78d93;
+  height: 80vh;
+}
+
+#new-game-logo{
+  transform: translate(-70px, -80px);;
+}
+
+.light-green-div{
+  height: 200px;
+  background-color: #b9ce87;
+  height: 10vh;
+}
+
+.dark-green-div{
+  height: 200px;
+  background-color: #85be6e;
+  height: 10vh;
+}
+
+.header{
+  font-family: 'Quicksand', sans-serif;
+  color: #39b549;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+#game-id-display{
+  background-color: white;
+  width: 100px;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f64852;
+  border: 1px black solid;
+  border-radius: 8px;
+}
+
+#join-game{
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  color: #f64852;
+  font-weight: bold;
+  padding: 5px;
+  width: 120px;
+  text-align: center;
+  border: 1px solid black;
+  transform: translate(16px, 16px);
+}
+
+.player-li{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.margin-spacing{
+  margin: 0 2.5rem;
+}
+
+.Start-logo {
+  height: 150px;
+}
+
+.center-div{
+  text-align: center;
+}
+
+#start-game-text{
+  color: white;
+  font-weight: bolder;
+  transform: translate(0, 120px);
+  z-index: 100;
+}
