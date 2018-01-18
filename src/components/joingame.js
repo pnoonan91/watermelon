@@ -9,7 +9,8 @@ class JoinGame extends Component {
 
     this.state = {
       name: '',
-      gameId: ''
+      gameId: '',
+      userId: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -22,16 +23,27 @@ class JoinGame extends Component {
     })
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault()
     const playersRef = firebase.database().ref('players')
     const player = {
       name: this.state.name,
       gameId: this.state.gameId,
-      team: ''
+      team: '',
+      activePlayer: false
     }
-    playersRef.push(player)
-    history.push('/waiting')
+    await playersRef.push(player)
+    await playersRef.once('value', (snapshot) => {
+      let players = snapshot.val()
+      let newState
+      for (let player in players) {
+        if (players[player].gameId === this.state.gameId && players[player].name === this.state.name) {
+          newState = player
+        }
+      }
+      this.setState({userId: newState})
+    })
+    history.push(`/waiting/${this.state.userId}`)
   }
 
   render() {

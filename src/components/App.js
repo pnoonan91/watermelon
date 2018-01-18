@@ -6,6 +6,7 @@ import history from './history'
 import NewGame from './newgame'
 import JoinGame from './joingame'
 import Teams from './teams'
+import GamePlay from './gameplay'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/game" component={NewGame} />
           <Route exact path="/join" component={JoinGame} />
           <Route exact path="/teams/:currentGame" component={Teams} />
+          <Route exact path="/play/:currentGame" component={GamePlay} />
         </Switch>
       </Router>
     )

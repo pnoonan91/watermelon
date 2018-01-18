@@ -10,30 +10,28 @@ class NewGame extends Component {
     this.state = {
       currentGame: '',
       players: [],
-      status: 'waiting'
+      status: ''
     }
 
     this.generateGameId = this.generateGameId.bind(this)
   }
 
   componentDidMount() {
-    const gameId = {gameId: this.generateGameId()}
+    const gameId = {gameId: this.generateGameId(), status: 'waiting'}
     const gameRef = firebase.database().ref('games')
     gameRef.push(gameId)
-    this.setState({currentGame: ''+gameId.gameId})
+    this.setState({currentGame: ''+gameId.gameId, status: gameId.status})
 
     const playersRef = firebase.database().ref('players')
     playersRef.on('value', (snapshot) => {
       let players = snapshot.val()
       let newState = []
       for (let player in players) {
-        console.log('Game ID: ', this.state.currentGame)
-        console.log('Users game id: ', players[player].gameId)
-        console.log('TRUE/FALSE: ', players[player].gameId === this.state.currentGame)
         if (players[player].gameId === this.state.currentGame) {
           newState.push({
             id: player,
-            name: players[player].name
+            name: players[player].name,
+            team: players[player].team
           })
         }
       }
@@ -65,9 +63,9 @@ class NewGame extends Component {
             </div>
             <Link to={`/teams/${this.state.currentGame}`}>
               <div>
-                <h1 id="start-game-text">Start Game!</h1>
+                <h1 id="start-game-text">Assign Teams!</h1>
                 <div>
-                  <img src="/images/start-game-icon.png" className="Start-logo"/>
+                  <img src="/images/start-game-icon.png" className="Start-logo" alt="start game logo" />
                 </div>
               </div>
             </Link>
