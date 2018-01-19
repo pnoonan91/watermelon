@@ -10,6 +10,7 @@ class GamePlay extends Component {
       currentGame: '',
       players: [],
       playersSorted: [],
+      playerIndex: 0,
       status: '',
       activePlayer: '',
       clues: [],
@@ -19,10 +20,13 @@ class GamePlay extends Component {
       teamAPoints: 0,
       teamBPoints: 0,
       roundName: '',
-      roundDescription: ''
+      roundDescription: '',
+      initiateFirstPlayer: true
     }
 
     this.merge = this.merge.bind(this)
+    this.nextPlayer = this.nextPlayer.bind(this)
+    this.incrementPlayerIndex = this.incrementPlayerIndex.bind(this)
   }
 
   async componentDidMount() {
@@ -31,7 +35,7 @@ class GamePlay extends Component {
     })
 
     const gameRef = firebase.database().ref('games')
-    gameRef.once('value', (snapshot) => {
+    await gameRef.once('value', (snapshot) => {
       let games = snapshot.val()
       let newGameId
       let newRound
@@ -46,6 +50,17 @@ class GamePlay extends Component {
         }
       }
       this.setState({gameId: newGameId, round: newRound, roundName: roundName, roundDescription: roundDescription})
+    })
+
+    gameRef.child(`/${this.state.gameId}`).on('value', (snapshot) => {
+      let newRound = snapshot.val()
+      if (newRound.round !== this.state.round) {
+        this.setState({
+          round: newRound.round,
+          roundName: newRound.roundName,
+          roundDescription: newRound.roundDescription
+        })
+      }
     })
 
     const playersRef = firebase.database().ref('players')
@@ -70,7 +85,7 @@ class GamePlay extends Component {
     this.setState({playersSorted: this.merge(teamA, teamB), teamA: teamA, teamB: teamB})
 
     const clueRef = firebase.database().ref('clues')
-    clueRef.on('value', (snapshot) => {
+    await clueRef.on('value', (snapshot) => {
       let clues = snapshot.val()
 
       for (let clue in clues) {
@@ -87,9 +102,24 @@ class GamePlay extends Component {
           }
         }
       }
-      if (this.state.clues.length === (this.state.players.length)*3) {
-        this.setState({activePlayer: this.state.playersSorted[0]})
+      if (this.state.clues.length === (this.state.players.length)*3 && this.state.initiateFirstPlayer === true) {
+        this.setState({activePlayer: this.state.playersSorted[this.state.playerIndex], initiateFirstPlayer: false})
+
+        this.incrementPlayerIndex()
+
         firebase.database().ref('players').child(`/${this.state.activePlayer.id}`).update({activePlayer: true})
+      }
+    })
+
+    gameRef.child(`/${this.state.gameId}`).on('value', (snapshot) => {
+      let newScore = snapshot.val()
+      console.log('newScore: ', newScore)
+      if (newScore.teamAScore !== this.state.teamAPoints || newScore.teamBScore !== this.state.teamBPoints) {
+        this.setState({
+          teamAPoints: newScore.teamAScore,
+          teamBPoints: newScore.teamBScore
+        })
+        this.nextPlayer()
       }
     })
   }
@@ -114,9 +144,26 @@ class GamePlay extends Component {
         aTeam = true
         arr2index++
       }
+    }
+
+    return returnArr
   }
 
-  return returnArr
+  incrementPlayerIndex() {
+    if (this.state.playerIndex+1 < this.state.playersSorted.length) {
+      this.setState({playerIndex: this.state.playerIndex+1})
+    } else {
+      this.setState({playerIndex: 0})
+    }
+  }
+
+  async nextPlayer() {
+    console.log('nextPlayer function hit')
+    await this.setState({
+      activePlayer: this.state.playersSorted[this.state.playerIndex]
+    })
+    this.incrementPlayerIndex()
+    firebase.database().ref('players').child(`/${this.state.activePlayer.id}`).update({activePlayer: true})
   }
 
   render() {

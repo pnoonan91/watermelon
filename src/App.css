@@ -41,6 +41,10 @@ h1{
   font-family: 'Quicksand', sans-serif;
 }
 
+h2{
+  font-family: 'Quicksand', sans-serif;
+}
+
 p{
   font-family: 'Open Sans', sans-serif
 }
@@ -349,4 +353,13 @@ textarea:focus, input:focus{
   padding: 5px 10px;
   color: #f64852;
   font-weight: bold;
+}
+
+#score-and-time{
+  display: flex;
+  justify-content: space-between;
+}
+
+#right-margin{
+  margin-right: 1rem;
 }
