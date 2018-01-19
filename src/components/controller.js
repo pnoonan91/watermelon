@@ -197,8 +197,43 @@ class Controller extends Component {
     })
   }
 
-  endGame() {
-    console.log('game ended!')
+  async endGame() {
+    console.log('game over')
+    let currentTeamScore
+    await firebase.database().ref('games').child(`/${this.state.gameFirebaseId}`).once('value', (snapshot) => {
+      const game = snapshot.val()
+      if (this.state.team === 'A') {
+        currentTeamScore = game.teamAScore
+      } else {
+        currentTeamScore = game.teamBScore
+      }
+    })
+
+    let scoreUpdate = firebase.database().ref('games').child(`/${this.state.gameFirebaseId}`)
+
+    if (this.state.team === 'A') {
+      scoreUpdate.update({teamAScore: currentTeamScore + this.state.roundPoints})
+    } else {
+      scoreUpdate.update({teamBScore: currentTeamScore + this.state.roundPoints})
+    }
+
+    await firebase.database().ref('players').child(`/${this.props.match.params.userId}`).update({activePlayer: false})
+
+    await firebase.database().ref('games').child(`/${this.state.gameFirebaseId}`).update({
+      round: 'Game Over',
+      roundName: '',
+      roundDescription: 'You should totally play again!',
+      status: 'complete'
+    })
+
+    this.setState({
+      pauseClock: true,
+      roundStarted: false,
+      active: false,
+      roundPoints: 0,
+      clues: [],
+      currentClue: ''
+    })
   }
 
   render() {
