@@ -17,7 +17,7 @@ class NewGame extends Component {
   }
 
   componentDidMount() {
-    const gameId = {gameId: this.generateGameId(), status: 'waiting'}
+    const gameId = {gameId: this.generateGameId(), status: 'waiting', round: 'Round 1', currentPlayer: ''}
     const gameRef = firebase.database().ref('games')
     gameRef.push(gameId)
     this.setState({currentGame: ''+gameId.gameId, status: gameId.status})

@@ -7,6 +7,8 @@ import NewGame from './newgame'
 import JoinGame from './joingame'
 import Teams from './teams'
 import GamePlay from './gameplay'
+import WaitingRoom from './waiting'
+import Controller from './controller'
 
 class App extends Component {
   render() {
@@ -18,6 +20,8 @@ class App extends Component {
           <Route exact path="/join" component={JoinGame} />
           <Route exact path="/teams/:currentGame" component={Teams} />
           <Route exact path="/play/:currentGame" component={GamePlay} />
+          <Route exact path="/waiting/:userId" component={WaitingRoom} />
+          <Route exact path="/player/:userId" component={Controller} />
         </Switch>
       </Router>
     )

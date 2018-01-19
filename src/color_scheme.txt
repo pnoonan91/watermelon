@@ -1,3 +1,4 @@
+bright-pink: #ff4944
 dark-pink: #f64852
 pink: #f76772
 light-pink: #f78d93
