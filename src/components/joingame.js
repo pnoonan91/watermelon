@@ -30,7 +30,8 @@ class JoinGame extends Component {
       name: this.state.name,
       gameId: this.state.gameId,
       team: '',
-      activePlayer: false
+      activePlayer: false,
+      enterClues: true
     }
     await playersRef.push(player)
     await playersRef.once('value', (snapshot) => {

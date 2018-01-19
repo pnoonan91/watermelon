@@ -249,6 +249,11 @@ button:focus {outline:0;}
 #hang-tight{
   padding: 0 1rem;
   font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#hang-tight-small{
+  padding: 0 1rem;
 }
 
 #gameplay-component{

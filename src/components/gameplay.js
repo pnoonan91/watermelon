@@ -17,7 +17,9 @@ class GamePlay extends Component {
       teamA: [],
       teamB: [],
       teamAPoints: 0,
-      teamBPoints: 0
+      teamBPoints: 0,
+      roundName: '',
+      roundDescription: ''
     }
 
     this.merge = this.merge.bind(this)
@@ -33,13 +35,17 @@ class GamePlay extends Component {
       let games = snapshot.val()
       let newGameId
       let newRound
+      let roundName
+      let roundDescription
       for (let game in games) {
         if (games[game].gameId === this.props.match.params.currentGame) {
           newGameId = game
           newRound = games[game].round
+          roundName = games[game].roundName
+          roundDescription = games[game].roundDescription
         }
       }
-      this.setState({gameId: newGameId, round: newRound})
+      this.setState({gameId: newGameId, round: newRound, roundName: roundName, roundDescription: roundDescription})
     })
 
     const playersRef = firebase.database().ref('players')
@@ -66,17 +72,26 @@ class GamePlay extends Component {
     const clueRef = firebase.database().ref('clues')
     clueRef.on('value', (snapshot) => {
       let clues = snapshot.val()
+
       for (let clue in clues) {
-        console.log(clues[clue].gameId === this.props.match.params.currentGame)
         if (clues[clue].gameId === this.props.match.params.currentGame) {
-          this.setState({clues: this.state.clues.concat({id: clue, clue: clues[clue].clue})})
+          let addToClues = true
+          for (var i = 0; i<this.state.clues.length; i++) {
+            console.log('entered for loop')
+            if (this.state.clues[i].id === clue) {
+              addToClues = false
+            }
+          }
+          if (addToClues) {
+            this.setState({clues: this.state.clues.concat({id: clue, clue: clues[clue].clue})})
+          }
         }
       }
       if (this.state.clues.length === (this.state.players.length)*3) {
         this.setState({activePlayer: this.state.playersSorted[0]})
+        firebase.database().ref('players').child(`/${this.state.activePlayer.id}`).update({activePlayer: true})
       }
     })
-
   }
 
   merge(arr1, arr2) {
@@ -113,6 +128,8 @@ class GamePlay extends Component {
               ? <div>
                 <div id="gameplay-header">{this.state.round}</div>
                 <p id="gameplay-subhead">{this.state.activePlayer.name} is up!</p>
+                <h1>{this.state.roundName}</h1>
+                <p>{this.state.roundDescription}</p>
                 <div id="team-container">
                   <div>
                     <h1 className="team-header">TEAM A</h1>
