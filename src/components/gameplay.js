@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css'
 import firebase from '../firebase.js'
+import history from './history'
 
 class GamePlay extends Component {
   constructor() {
@@ -123,6 +124,9 @@ class GamePlay extends Component {
       }
       if (newScore.activePlayer !== this.state.activePlayer.name) {
         this.nextPlayer()
+      }
+      if (newScore.status === 'complete') {
+        history.push(`/gameover/${this.props.match.params.currentGame}`)
       }
     })
   }
