@@ -122,12 +122,19 @@ class GamePlay extends Component {
           teamBPoints: newScore.teamBScore
         })
       }
-      if (newScore.activePlayer !== this.state.activePlayer.name) {
+      if (newScore.activePlayer !== this.state.activePlayer.name && this.state.activePlayer !== '') {
         this.nextPlayer()
       }
       if (newScore.status === 'complete') {
         history.push(`/gameover/${this.props.match.params.currentGame}`)
       }
+    })
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      activePlayer: '',
+      clues: []
     })
   }
 

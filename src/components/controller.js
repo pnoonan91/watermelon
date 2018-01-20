@@ -238,6 +238,16 @@ class Controller extends Component {
       clues: [],
       currentClue: {}
     })
+
+    firebase.database().ref('players').child(`/${this.props.match.params.userId}`).on('value', (snapshot) => {
+      let player = snapshot.val()
+      console.log('new game listener: ', player)
+      if (player.enterClues === true) {
+        this.setState({
+          enterClues: true
+        })
+      }
+    })
   }
 
   render() {
