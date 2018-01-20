@@ -104,6 +104,7 @@ class GamePlay extends Component {
       }
       if (this.state.clues.length === (this.state.players.length)*3 && this.state.initiateFirstPlayer === true) {
         this.setState({activePlayer: this.state.playersSorted[this.state.playerIndex], initiateFirstPlayer: false})
+        firebase.database().ref('games').child(`/${this.state.gameId}`).update({activePlayer: this.state.activePlayer.name})
 
         this.incrementPlayerIndex()
 
@@ -119,6 +120,8 @@ class GamePlay extends Component {
           teamAPoints: newScore.teamAScore,
           teamBPoints: newScore.teamBScore
         })
+      }
+      if (newScore.activePlayer !== this.state.activePlayer.name) {
         this.nextPlayer()
       }
     })
@@ -162,6 +165,7 @@ class GamePlay extends Component {
     await this.setState({
       activePlayer: this.state.playersSorted[this.state.playerIndex]
     })
+    await firebase.database().ref('games').child(`/${this.state.gameId}`).update({activePlayer: this.state.activePlayer.name})
     this.incrementPlayerIndex()
     firebase.database().ref('players').child(`/${this.state.activePlayer.id}`).update({activePlayer: true})
   }

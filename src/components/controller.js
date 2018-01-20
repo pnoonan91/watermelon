@@ -20,7 +20,7 @@ class Controller extends Component {
       roundStarted: false,
       pauseClock: true,
       clues: [],
-      currentClue: '',
+      currentClue: {},
       roundPoints: 0,
       team: ''
     }
@@ -100,7 +100,7 @@ class Controller extends Component {
     else {
       let currentClue = this.state.clues.splice((Math.floor(Math.random() * this.state.clues.length)), 1)
       let clueValue = currentClue[0]
-      this.setState({currentClue: clueValue.clue})
+      this.setState({currentClue: {id: clueValue.id, clue: clueValue.clue}})
       firebase.database().ref('clues').child(`/${clueValue.id}`).update({open: false})
     }
   }
@@ -187,13 +187,17 @@ class Controller extends Component {
 
     await firebase.database().ref('players').child(`/${this.props.match.params.userId}`).update({activePlayer: false})
 
+    await firebase.database().ref('games').child(`/${this.state.gameFirebaseId}`).update({activePlayer: ''})
+
+    await firebase.database().ref('clues').child(`/${this.state.currentClue.id}`).update({open: true})
+
     this.setState({
       pauseClock: true,
       roundStarted: false,
       active: false,
       roundPoints: 0,
       clues: [],
-      currentClue: ''
+      currentClue: {}
     })
   }
 
@@ -232,7 +236,7 @@ class Controller extends Component {
       active: false,
       roundPoints: 0,
       clues: [],
-      currentClue: ''
+      currentClue: {}
     })
   }
 
@@ -263,7 +267,7 @@ class Controller extends Component {
               </div>
               {
                 this.state.roundStarted
-                  ? <p id="controller-subhead">{this.state.currentClue}</p>
+                  ? <p id="controller-subhead">{this.state.currentClue.clue}</p>
                   : <p id="controller-subhead">{this.state.round}</p>
               }
               <p id="hang-tight">{this.state.roundName}</p>
