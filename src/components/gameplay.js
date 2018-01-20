@@ -93,7 +93,6 @@ class GamePlay extends Component {
         if (clues[clue].gameId === this.props.match.params.currentGame) {
           let addToClues = true
           for (var i = 0; i<this.state.clues.length; i++) {
-            console.log('entered for loop')
             if (this.state.clues[i].id === clue) {
               addToClues = false
             }
@@ -115,7 +114,6 @@ class GamePlay extends Component {
 
     gameRef.child(`/${this.state.gameId}`).on('value', (snapshot) => {
       let newScore = snapshot.val()
-      console.log('newScore: ', newScore)
       if (newScore.teamAScore !== this.state.teamAPoints || newScore.teamBScore !== this.state.teamBPoints) {
         this.setState({
           teamAPoints: newScore.teamAScore,
@@ -172,7 +170,6 @@ class GamePlay extends Component {
   }
 
   async nextPlayer() {
-    console.log('nextPlayer function hit')
     await this.setState({
       activePlayer: this.state.playersSorted[this.state.playerIndex]
     })

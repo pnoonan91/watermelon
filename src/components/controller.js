@@ -3,6 +3,7 @@ import '../App.css'
 import { Link } from 'react-router-dom'
 import firebase from '../firebase'
 import ReactCountdownClock from 'react-countdown-clock'
+import history from './history'
 
 class Controller extends Component {
   constructor() {
@@ -51,6 +52,12 @@ class Controller extends Component {
       for (let game in games) {
         if (games[game].gameId === this.state.gameId) {
           this.setState({round: games[game].round, roundName: games[game].roundName, roundDescription: games[game].roundDescription, gameFirebaseId: game})
+        }
+        if (games[game].redirectToWaiting === true) {
+          firebase.database().ref('games').child(`/${game}`).update({
+            redirectToWaiting: false
+          })
+          history.push(`/waiting/${this.props.match.params.userId}`)
         }
       }
     })
@@ -158,7 +165,6 @@ class Controller extends Component {
     firebase.database().ref('clues').once('value', (snapshot) => {
       const clues = snapshot.val()
       for (let clue in clues) {
-        console.log('resetClueStatus test: ', (clues[clue].gameId === this.state.gameId))
         if (clues[clue].gameId === this.state.gameId) {
           firebase.database().ref('clues').child(`/${clue}`).update({open: true})
         }
@@ -202,7 +208,6 @@ class Controller extends Component {
   }
 
   async endGame() {
-    console.log('game over')
     let currentTeamScore
     await firebase.database().ref('games').child(`/${this.state.gameFirebaseId}`).once('value', (snapshot) => {
       const game = snapshot.val()
@@ -241,7 +246,6 @@ class Controller extends Component {
 
     firebase.database().ref('players').child(`/${this.props.match.params.userId}`).on('value', (snapshot) => {
       let player = snapshot.val()
-      console.log('new game listener: ', player)
       if (player.enterClues === true) {
         this.setState({
           enterClues: true
