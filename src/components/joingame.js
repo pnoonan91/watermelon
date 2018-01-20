@@ -17,6 +17,14 @@ class JoinGame extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentWillUnmount() {
+    this.setState({
+      name: '',
+      gameId: '',
+      userId: ''
+    })
+  }
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -49,13 +57,16 @@ class JoinGame extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Join Game!</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="name" placeholder="Enter a Name!" onChange={this.handleChange} value={this.state.name}/>
-          <input type="text" name="gameId" placeholder="What's your Game #?" onChange={this.handleChange} value={this.state.gameId}/>
-          <button type="submit">Join Game!</button>
-        </form>
+      <div className="center-content tworem-padding waiting-room-component">
+        <div id="waiting-container">
+          <img src="/images/circle-watermelon-large.png" id="waiting-watermelon"/>
+          <h1 id="waiting-text">Join Game!</h1>
+          <form onSubmit={this.handleSubmit} id="join-form">
+            <input type="text" name="name" placeholder="Enter a Name!" onChange={this.handleChange} value={this.state.name} className="controller-input"/>
+            <input type="text" name="gameId" placeholder="What's your Game #?" onChange={this.handleChange} value={this.state.gameId} className="controller-input"/>
+            <button type="submit" id="join-game-btn">Join Game!</button>
+          </form>
+        </div>
       </div>
     )
   }

@@ -34,10 +34,17 @@ class WaitingRoom extends Component {
     })
   }
 
+  componentWillUnmount() {
+    this.setState({
+      currentUser: '',
+      currentGame: ''
+    })
+  }
+
   async startOver(e) {
     await firebase.database().ref('players').child(`/${e.target.value}`).remove()
 
-    history.push('/join')
+    window.location.assign('http://localhost:3000/join')
   }
 
   render() {
