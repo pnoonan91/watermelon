@@ -10,6 +10,7 @@ import GamePlay from './gameplay'
 import WaitingRoom from './waiting'
 import Controller from './controller'
 import GameOver from './gameover'
+import Rules from './rules'
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route exact path="/waiting/:userId" component={WaitingRoom} />
           <Route exact path="/player/:userId" component={Controller} />
           <Route exact path="/gameover/:currentGame" component={GameOver} />
+          <Route exact path="/rules" component={Rules} />
         </Switch>
       </Router>
     )
