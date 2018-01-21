@@ -1,9 +1,133 @@
+.waiting-room-component {
+
+}
+
+.tworem-padding {
+
+}
+
+.center-content {
+
+}
+
+#waiting-container {
+    width: 100%;
+    overflow: hidden;
+    min-height: 650px;
+    background-color: white;
+    text-align: center;
+}
+
+#waiting-watermelon {
+    width: 700px;
+    -webkit-transform: translate(-25%, -50%);
+    -ms-transform: translate(-25%, -50%);
+    left: -50%;
+    top: -350px;
+    margin: 0;
+}
+
+#waiting-text {
+    position: relative;
+    top: -350px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+#join-form {
+    position: relative;
+    top: -350px;
+    text-align: center;
+}
+
+#join-game-btn {
+    position: relative;
+    bottom: 15px;
+    margin: 1rem;
+    background-color: #b9ce87;
+    border: 10px solid #85be6e;
+    padding: .5rem 1rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-radius: 8px;
+}
+
+#playing-component {
+
+}
+
+#playing-container {
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    background-color: white;
+    text-align: center;
+}
+
+#controller-header {
+    width: 100%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: #f64852;
+    color: #f78d93;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.controller-input {
+    border: 1px solid grey;
+    width: 300px;
+    height: 50px;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    padding: 10px 15px;
+}
+
+.controller-submit {
+    font-size: 2rem;
+    background-color: #f78d93;
+    border: 1px solid #f64852;
+    padding: 1rem;
+    color: #f64852;
+    font-weight: bold;
+    margin-top: 3rem;
+}
+
+#correct-answer-button{
+  width: 150px;
+  min-height: 40px;
+  background-color: #b9ce87;
+  border: 3px solid #85be6e;
+  font-size: 3rem;
+  color: #85be6e;
+  margin: 1rem;
+}
+
+#wrong-answer-button{
+  width: 150px;
+  min-height: 40px;
+  background-color: #f78d93;
+  border: 3px solid #f64852;
+  font-size: 3rem;
+  color: #f64852;
+  margin: 1rem;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
   height: 180px;
 }
 
@@ -25,7 +149,7 @@
   color: black;
   font-size: large;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .App-intro {
@@ -54,21 +178,21 @@ p{
 }
 
 .option{
-  width: 300px;
-    margin: auto;
-    background-color: #b9ce87;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border: 10px solid #85be6e;
-    border-radius: 15px;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
+  width: 200px;
+  margin: auto;
+  background-color: #f78d93;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 10px solid #85be6e;
+  border-radius: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 #landing-page-options{
-  background-color: #f78d93;
-  border-top: 5px solid white;
+  background-color: white;
+  border-top: 5px solid #85be6e;
   padding-bottom: 2rem;
   border-bottom: 30px solid #f64852;
 }
@@ -76,112 +200,6 @@ p{
 a{
   color: black;
   text-decoration: none;
-}
-
-#new-game-pane{
-  display: flex;
-  background-color: #f78d93;
-  height: 80vh;
-}
-
-#new-game-logo{
-  transform: translate(-70px, -80px);;
-}
-
-.light-green-div{
-  height: 200px;
-  background-color: #b9ce87;
-  height: 10vh;
-}
-
-.dark-green-div{
-  height: 200px;
-  background-color: #85be6e;
-  height: 10vh;
-}
-
-.header{
-  font-family: 'Quicksand', sans-serif;
-  color: #39b549;
-  font-weight: bold;
-  font-size: 3rem;
-}
-
-#game-id-display{
-  background-color: white;
-  width: 100px;
-  padding: 2rem;
-  text-align: center;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #f64852;
-  border: 1px black solid;
-  border-radius: 8px;
-}
-
-#join-game{
-  background-color: white;
-  font-family: 'Open Sans', sans-serif;
-  color: #f64852;
-  font-weight: bold;
-  padding: 5px;
-  width: 120px;
-  text-align: center;
-  border: 1px solid black;
-  transform: translate(16px, 16px);
-}
-
-.player-li{
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.margin-spacing{
-  margin: 0 2.5rem;
-}
-
-.Start-logo {
-  height: 150px;
-}
-
-.center-div{
-  text-align: center;
-}
-
-#start-game-text{
-  color: white;
-  font-weight: bolder;
-  transform: translate(0, 120px);
-  z-index: 100;
-}
-
-#waiting-container{
-  border: 1px solid #f64852;
-  width: 350px;
-  overflow: hidden;
-  height: 650px;
-  margin: auto;
-  background-color: white;
-  box-shadow: 0px 0px 7px 1px #f64852;
-}
-
-#waiting-watermelon{
-  width: 700px;
-  transform: translate(-25%, -50%);
-  animation: App-logo-spin infinite 20s linear;
-  position: relative;
-  left: -50%;
-  top: -350px;
-  margin: 0;
-}
-
-#waiting-text{
-  position: relative;
-  top: -350px;
-  text-align: center;
-  font-weight: bold;
 }
 
 #start-over-sign-up{
@@ -199,55 +217,11 @@ a{
   border-radius: 8px;
 }
 
-.center-content{
-  text-align: center;
-}
-
-.tworem-padding{
-  padding: 2rem;
-}
-
-.waiting-room-component{
-  background-color: #f78d93;
-  height: 100vh;
-}
-
-button:focus {outline:0;}
-
-#controller-header{
-  width: 100%;
-  text-align: center;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  background-color: #f64852;
-  padding: .5rem 0;
-  color: #f78d93;
-  margin-bottom: 1rem;
-}
-
 #controller-subhead{
   font-family: 'Quicksand', sans-serif;
   font-size: 3rem;
   font-weight: bold;
   color: #f64852;
-}
-
-#playing-container{
-  border: 1px solid #f64852;
-  width: 350px;
-  overflow: hidden;
-  height: 500px;
-  margin: auto;
-  background-color: white;
-  box-shadow: 0px 0px 7px 1px #f64852;
-  text-align: center;
-}
-
-#playing-component{
-  background-color: #b9ce87;
-  padding-top: 2rem;
-  height: 100vh;
 }
 
 #hang-tight{
@@ -260,101 +234,6 @@ button:focus {outline:0;}
   padding: 0 1rem;
 }
 
-#gameplay-component{
-  background-color: #f78d93;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  min-height: 100vh;
-}
-
-#gameplay-container{
-  border: 1px solid #85be6e;
-  width: 80%;
-  min-height: 500px;
-  background-color: white;
-  margin: auto;
-  box-shadow: 0px 0px 7px 1px #85be6e;
-  text-align: center;
-  overflow: hidden;
-}
-
-#gameplay-header{
-  width: 100%;
-  text-align: center;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 4rem;
-  font-weight: bold;
-  background-color: #85be6e;
-  padding: 1rem 0;
-  color: #b9ce87;
-}
-
-#gameplay-subhead{
-  font-family: 'Quicksand', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #85be6e;
-}
-
-#team-container{
-  display: flex;
-  justify-content: space-around;
-}
-
-.team-header{
-  color: #85be6e
-}
-
-#gameplay-divider{
-  border: 1px solid #85be6e;
-}
-
-#clue-header{
-  font-family: 'Quicksand', sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #85be6e;
-  position: relative;
-  top: -200px;
-}
-
-#clue-text{
-  position: relative;
-  top: -200px;
-}
-
-.large-font{
-  font-size: 2rem;
-}
-
-#clue-watermelon{
-  width: 400px;
-  position: relative;
-  top: -200px;
-  animation: App-logo-spin infinite 20s linear;
-}
-
-.controller-input{
-  width: 300px;
-  height: 30px;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  padding: 5px 10px;
-}
-
-textarea:focus, input:focus{
-  outline: none;
-}
-
-.controller-submit{
-  font-size: 1.5rem;
-  background-color: #f78d93;
-  border: 1px solid #f64852;
-  padding: 5px 10px;
-  color: #f64852;
-  font-weight: bold;
-}
-
 #score-and-time{
   display: flex;
   justify-content: space-between;
@@ -364,76 +243,525 @@ textarea:focus, input:focus{
   margin-right: 1rem;
 }
 
-#game-over-container{
-  border: 1px solid #85be6e;
-  width: 60%;
-  min-height: 450px;
-  background-color: white;
-  margin: auto;
-  box-shadow: 0px 0px 7px 1px #85be6e;
-  text-align: center;
-  overflow: hidden;
-}
+@media (min-width: 600px) {
+  .App {
+    text-align: center;
+  }
 
-.game-over-score-container{
-  display: flex;
-  justify-content: space-around;
-}
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 180px;
+  }
 
-.game-over-header{
-  color: #85be6e;
-  font-size: 3rem;
-  font-weight: bold;
-}
+  .App-header {
+    background-color: #b9ce87;
+    height: 260px;
+    padding: 20px;
+    color: white;
+    border-top: 30px solid #85be6e;
+  }
 
-.scoreboard-font{
-  font-size: 6rem;
-  font-family: 'Quicksand', sans-serif;
-}
+  .App-title {
+    color: #39b549;
+    font-weight: bold;
+    font-size: 4rem;
+  }
 
-.score-container{
-  border: 1px solid #85be6e;
-  padding: 2rem;
-  margin-top: 3rem;
-  transition: all 2s;
-}
+  .App-subtitle{
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    font-size: 2rem;
+  }
 
-.game-over-button{
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  background-color: #b9ce87;
-  border: 15px solid #85be6e;
-  padding: 1rem;
-  text-align: center;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: black;
-  border-radius: 8px;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 2s linear;
-}
+  .App-intro {
+    font-size: large;
+  }
 
-#join-form{
-  position: relative;
-  top: -350px;
-  text-align: center;
-}
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 
-#join-game-btn{
-  position: relative;
-  bottom: 15px;
-  margin: 1rem;
-  background-color: #b9ce87;
-  border: 10px solid #85be6e;
-  padding: .5rem 1rem;
-  text-align: center;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: black;
-  border-radius: 8px;
+  h1{
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  h2{
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  p{
+    font-family: 'Open Sans', sans-serif
+  }
+
+  .no-margin{
+    margin: 0;
+  }
+
+  .option{
+    width: 300px;
+      margin: auto;
+      background-color: #f78d93;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border: 10px solid #85be6e;
+      border-radius: 15px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+  }
+
+  #landing-page-options{
+    background-color: white;
+    border-top: 5px solid #85be6e;
+    padding-bottom: 2rem;
+    border-bottom: 30px solid #f64852;
+  }
+
+  a{
+    color: black;
+    text-decoration: none;
+  }
+
+  #new-game-pane{
+    display: flex;
+    background-color: #f78d93;
+    height: 80vh;
+  }
+
+  #new-game-logo{
+    transform: translate(-70px, -80px);;
+  }
+
+  .light-green-div{
+    height: 200px;
+    background-color: #b9ce87;
+    height: 10vh;
+  }
+
+  .dark-green-div{
+    height: 200px;
+    background-color: #85be6e;
+    height: 10vh;
+  }
+
+  .header{
+    font-family: 'Quicksand', sans-serif;
+    color: #39b549;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+  #game-id-display{
+    background-color: white;
+    width: 100px;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f64852;
+    border: 1px black solid;
+    border-radius: 8px;
+  }
+
+  #join-game{
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+    color: #f64852;
+    font-weight: bold;
+    padding: 5px;
+    width: 120px;
+    text-align: center;
+    border: 1px solid black;
+    transform: translate(16px, 16px);
+  }
+
+  .player-li{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .margin-spacing{
+    margin: 0 2.5rem;
+  }
+
+  .Start-logo {
+    height: 150px;
+  }
+
+  .center-div{
+    text-align: center;
+  }
+
+  #start-game-text{
+    color: white;
+    font-weight: bolder;
+    transform: translate(0, 120px);
+    z-index: 100;
+  }
+
+  #waiting-container{
+    border: 1px solid #f64852;
+    width: 350px;
+    overflow: hidden;
+    height: 650px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 7px 1px #f64852;
+  }
+
+  #waiting-watermelon{
+    width: 700px;
+    transform: translate(-25%, -50%);
+    animation: App-logo-spin infinite 20s linear;
+    position: relative;
+    left: -50%;
+    top: -350px;
+    margin: 0;
+  }
+
+  #waiting-text{
+    position: relative;
+    top: -350px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  #start-over-sign-up{
+    position: relative;
+    top: -350px;
+    margin: 2rem;
+    background-color: #b9ce87;
+    border: 15px solid #85be6e;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-radius: 8px;
+  }
+
+  .center-content{
+    text-align: center;
+  }
+
+  .tworem-padding{
+    padding: 2rem;
+  }
+
+  .waiting-room-component{
+    background-color: #f78d93;
+    min-height: 100vh;
+  }
+
+  button:focus {outline:0;}
+
+  #controller-header{
+    width: 100%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: #f64852;
+    padding: .5rem 0;
+    color: #f78d93;
+    margin-bottom: 1rem;
+  }
+
+  #controller-subhead{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f64852;
+  }
+
+  #playing-container{
+    border: 1px solid #f64852;
+    width: 350px;
+    overflow: hidden;
+    min-height: 500px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 7px 1px #f64852;
+    text-align: center;
+  }
+
+  #playing-component{
+    background-color: #b9ce87;
+    padding-top: 2rem;
+    min-height: 100vh;
+  }
+
+  #hang-tight{
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  #hang-tight-small{
+    padding: 0 1rem;
+  }
+
+  #gameplay-component{
+    background-color: #f78d93;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-height: 100vh;
+  }
+
+  #gameplay-container{
+    border: 1px solid #85be6e;
+    width: 80%;
+    min-height: 500px;
+    background-color: white;
+    margin: auto;
+    box-shadow: 0px 0px 7px 1px #85be6e;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  #gameplay-header{
+    width: 100%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+    background-color: #85be6e;
+    padding: 1rem 0;
+    color: #b9ce87;
+  }
+
+  #gameplay-subhead{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #85be6e;
+  }
+
+  #gameplay-subhead-left{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #85be6e;
+    text-align: left;
+  }
+
+  #team-container{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+  }
+
+  .team-header{
+    color: #85be6e
+  }
+
+  #gameplay-divider{
+    border: 1px solid #85be6e;
+  }
+
+  #clue-header{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #85be6e;
+    position: relative;
+    top: -200px;
+  }
+
+  #clue-text{
+    position: relative;
+    top: -200px;
+  }
+
+  .large-font{
+    font-size: 2rem;
+  }
+
+  #clue-watermelon{
+    width: 400px;
+    position: relative;
+    top: -200px;
+    animation: App-logo-spin infinite 20s linear;
+  }
+
+  .controller-input{
+    width: 300px;
+    height: 30px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  .controller-submit{
+    font-size: 1.5rem;
+    background-color: #f78d93;
+    border: 1px solid #f64852;
+    padding: 5px 10px;
+    color: #f64852;
+    font-weight: bold;
+    margin: 2rem;
+  }
+
+  #score-and-time{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #right-margin{
+    margin-right: 1rem;
+  }
+
+  #game-over-container{
+    border: 1px solid #85be6e;
+    width: 60%;
+    min-height: 450px;
+    background-color: white;
+    margin: auto;
+    box-shadow: 0px 0px 7px 1px #85be6e;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .game-over-score-container{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .game-over-header{
+    color: #85be6e;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  .scoreboard-font{
+    font-size: 6rem;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .score-container{
+    border: 1px solid #85be6e;
+    padding: 2rem;
+    margin-top: 3rem;
+    transition: all 2s;
+  }
+
+  .game-over-button{
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #b9ce87;
+    border: 15px solid #85be6e;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-radius: 8px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 2s linear;
+  }
+
+  #join-form{
+    position: relative;
+    top: -350px;
+    text-align: center;
+  }
+
+  #join-game-btn{
+    position: relative;
+    bottom: 15px;
+    margin: 1rem;
+    background-color: #b9ce87;
+    border: 10px solid #85be6e;
+    padding: .5rem 1rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-radius: 8px;
+  }
+
+  #start-game-btn{
+    margin: 2rem;
+    background-color: #b9ce87;
+    border: 10px solid #85be6e;
+    padding: .5rem 1rem;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    border-radius: 8px;
+  }
+
+  #assignment-flex{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #team-name-container{
+    min-width: 300px;
+  }
+
+  .table-font{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  #team-selector{
+    font-size: 1rem;
+      height: 40px;
+      margin-left: 1rem;
+      background-color: white;
+      margin-top: 1rem;
+  }
+
+  #team-deselect{
+    height: 30px;
+      background-color: white;
+      font-weight: bold;
+      border-radius: 2px;
+  }
+
+  #correct-answer-button{
+    width: 150px;
+    min-height: 40px;
+    background-color: #b9ce87;
+    border: 3px solid #85be6e;
+    font-size: 3rem;
+    color: #85be6e;
+    margin: 1rem;
+  }
+
+  #wrong-answer-button{
+    width: 150px;
+    min-height: 40px;
+    background-color: #f78d93;
+    border: 3px solid #f64852;
+    font-size: 3rem;
+    color: #f64852;
+    margin: 1rem;
+  }
+
+  .team-score-box{
+    margin: 2rem;
+    border: 1px solid #85be6e;
+    padding: 2rem;
+  }
 }

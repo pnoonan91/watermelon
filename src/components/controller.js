@@ -289,8 +289,8 @@ class Controller extends Component {
               {
                 this.state.roundStarted
                   ? <div>
-                    <button onClick={this.correctAnswer}>Yes</button>
-                    <button onClick={this.passClue}>No</button>
+                    <button onClick={this.correctAnswer} id="correct-answer-button">&#10004;</button>
+                    <button onClick={this.passClue} id="wrong-answer-button">&#10007;</button>
                   </div>
                   : <button className="controller-submit" onClick={this.startRound}>start round!</button>
               }

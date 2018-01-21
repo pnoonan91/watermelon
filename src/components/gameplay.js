@@ -190,7 +190,7 @@ class GamePlay extends Component {
                 <h1>{this.state.roundName}</h1>
                 <p>{this.state.roundDescription}</p>
                 <div id="team-container">
-                  <div>
+                  <div className="team-score-box">
                     <h1 className="team-header">TEAM A</h1>
                     <h1>{this.state.teamAPoints} Points</h1>
                     {
@@ -200,7 +200,7 @@ class GamePlay extends Component {
                     } -
                   </div>
                   <div id="gameplay-divider" />
-                  <div>
+                  <div className="team-score-box">
                     <h1 className="team-header">TEAM B</h1>
                     <h1>{this.state.teamBPoints} Points</h1>
                     {

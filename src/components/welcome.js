@@ -20,7 +20,7 @@ class Welcome extends Component {
               <Link to="/join">Join a Game</Link>
             </div>
             <div className="option">
-              Rules of the Game
+              Rules
             </div>
           </div>
         </div>

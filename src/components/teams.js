@@ -15,6 +15,7 @@ class Teams extends Component {
     }
 
     this.assignTeam = this.assignTeam.bind(this)
+    this.removePlayer = this.removePlayer.bind(this)
     this.startGame = this.startGame.bind(this)
   }
 
@@ -56,6 +57,12 @@ class Teams extends Component {
     playersRef.update({team: e.target.value})
   }
 
+  removePlayer(e) {
+    const playersRef = firebase.database().ref('players').child(`/${e.target.value}`)
+
+    playersRef.update({team: ''})
+  }
+
   startGame(e) {
     const gameStatus = firebase.database().ref('games').child(`/${this.state.gameId}`)
     gameStatus.update({status: 'playing'})
@@ -65,64 +72,72 @@ class Teams extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Teams Component!</h1>
-        <div>
-          <div>
-            <h4>Unassigned Players:</h4>
-            <table>
-              {
-                this.state.players.map(player => {
-                  if (player.team === '') {
-                    return <tbody key={player.id}>
-                      <tr>
-                        <td>{player.name}</td>
-                        <td>
-                          <select onChange={this.assignTeam} name={player.id}>
-                            <option>Assign a Team!</option>
-                            <option value="A">Team A</option>
-                            <option value="B">Team B</option>
-                          </select>
-                        </td>
-                      </tr>
-                    </tbody>
-                  }
-                })
-              }
-            </table>
+      <div id="gameplay-component">
+        <div id="gameplay-container">
+          <h1 id="gameplay-header" className="no-margin">Choose Your Teams!</h1>
+          <div id="assignment-flex">
+            <div>
+              <h4 id="gameplay-subhead-left" className="no-margin">Unassigned Players:</h4>
+              <table className="table-font">
+                {
+                  this.state.players.map(player => {
+                    if (player.team === '') {
+                      return <tbody key={player.id}>
+                        <tr>
+                          <td>{player.name}</td>
+                          <td>
+                            <select onChange={this.assignTeam} name={player.id} id="team-selector">
+                              <option>Team</option>
+                              <option value="A">A</option>
+                              <option value="B">B</option>
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    }
+                  })
+                }
+              </table>
+            </div>
+            <div id="team-name-container">
+              <h4 id="gameplay-subhead-left" className="no-margin">Team A:</h4>
+              <table className="table-font">
+                {
+                  this.state.players.map(player => {
+                    if (player.team === 'A') {
+                      return <tbody key={player.id}>
+                        <tr>
+                          <td>{player.name}</td>
+                          <td>
+                            <button onClick={this.removePlayer} value={player.id} id="team-deselect">X</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    }
+                  })
+                }
+              </table>
+              <h4 id="gameplay-subhead-left" className="no-margin">Team B:</h4>
+              <table className="table-font">
+                {
+                  this.state.players.map(player => {
+                    if (player.team === 'B') {
+                      return <tbody key={player.id}>
+                        <tr>
+                          <td>{player.name}</td>
+                          <td>
+                            <button onClick={this.removePlayer} value={player.id} id="team-deselect">X</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    }
+                  })
+                }
+              </table>
+            </div>
           </div>
-          <div>
-            <h4>TEAM A:</h4>
-            <table>
-              {
-                this.state.players.map(player => {
-                  if (player.team === 'A') {
-                    return <tbody key={player.id}>
-                      <tr>
-                        <td>{player.name}</td>
-                      </tr>
-                    </tbody>
-                  }
-                })
-              }
-            </table>
-            <h4>TEAM B:</h4>
-            <table>
-              {
-                this.state.players.map(player => {
-                  if (player.team === 'B') {
-                    return <tbody key={player.id}>
-                      <tr>
-                        <td>{player.name}</td>
-                      </tr>
-                    </tbody>
-                  }
-                })
-              }
-            </table>
-          </div>
+          <button onClick={this.startGame} name={this.state.currentGame} id="start-game-btn">Start Game!</button>
         </div>
-        <button onClick={this.startGame} name={this.state.currentGame}>Start Game!</button>
       </div>
     )
   }
